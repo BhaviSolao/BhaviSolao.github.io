@@ -1,0 +1,773 @@
+<title>Bhavika Solao Portfolio</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,ital@9..144,300..700,0..1&family=Source+Sans+3:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --bg: #efede5;
+    --bg-elevated: #f7f5ef;
+    --ink: #1c1b17;
+    --ink-soft: #56534a;
+    --ink-faint: #85806f;
+    --line: #dad6c9;
+    --accent: #2f5d50;
+    --accent-soft: #e3e9e3;
+    --clay: #b5613c;
+    --shadow: 0 1px 0 rgba(28,27,23,0.06);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #15140f;
+      --bg-elevated: #1d1c15;
+      --ink: #eeeae0;
+      --ink-soft: #b4af9f;
+      --ink-faint: #7d7a6c;
+      --line: #34322a;
+      --accent: #7fb6a4;
+      --accent-soft: #22322c;
+      --clay: #d98b63;
+      --shadow: 0 1px 0 rgba(0,0,0,0.3);
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --bg: #15140f;
+    --bg-elevated: #1d1c15;
+    --ink: #eeeae0;
+    --ink-soft: #b4af9f;
+    --ink-faint: #7d7a6c;
+    --line: #34322a;
+    --accent: #7fb6a4;
+    --accent-soft: #22322c;
+    --clay: #d98b63;
+    --shadow: 0 1px 0 rgba(0,0,0,0.3);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Source Sans 3", "Segoe UI", system-ui, sans-serif;
+    font-size: 17px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: inherit; }
+
+  .wrap {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+
+  header.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 28px 0;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 13px;
+    letter-spacing: 0.04em;
+    color: var(--ink-faint);
+    border-bottom: 1px solid var(--line);
+  }
+
+  header.topbar .mark {
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  nav.topbar-links { display: flex; gap: 24px; }
+  nav.topbar-links a { text-decoration: none; color: var(--ink-soft); transition: color .15s ease; }
+  nav.topbar-links a:hover, nav.topbar-links a:focus-visible { color: var(--accent); }
+
+  section { padding: 88px 0; border-bottom: 1px solid var(--line); }
+  section:last-of-type { border-bottom: none; }
+
+  .hero {
+    position: relative;
+    padding: 96px 0 100px;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+  }
+
+  #hero-canvas {
+    position: absolute;
+    inset: -40px -28px auto -28px;
+    height: calc(100% + 40px);
+    width: calc(100% + 56px);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .hero > * { position: relative; z-index: 1; }
+
+  .eyebrow {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  h1.display {
+    font-family: "Fraunces", Georgia, serif;
+    font-weight: 500;
+    font-optical-sizing: auto;
+    font-size: clamp(2.6rem, 6vw, 4.6rem);
+    line-height: 1.02;
+    margin: 0;
+    text-wrap: balance;
+    max-width: 14ch;
+  }
+
+  h1.display em {
+    font-style: italic;
+    font-weight: 350;
+    color: var(--accent);
+  }
+
+  .hero-lede {
+    max-width: 54ch;
+    font-size: 1.15rem;
+    color: var(--ink-soft);
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 14px;
+    margin-top: 14px;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 20px;
+    border-radius: 3px;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 13.5px;
+    letter-spacing: 0.02em;
+    text-decoration: none;
+    border: 1px solid var(--line);
+    background: transparent;
+    cursor: pointer;
+    color: inherit;
+    transition: border-color .15s ease, background .15s ease, transform .1s ease;
+  }
+  .btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  .btn.primary {
+    background: var(--accent);
+    color: var(--bg-elevated);
+    border-color: var(--accent);
+  }
+  .btn.primary:hover { transform: translateY(-1px); }
+
+  .btn.ghost { color: var(--ink); background: transparent; }
+  .btn.ghost:hover { border-color: var(--accent); color: var(--accent); }
+
+  h2.section-title {
+    font-family: "Fraunces", Georgia, serif;
+    font-weight: 480;
+    font-size: 1.9rem;
+    margin: 0 0 8px;
+  }
+
+  .section-kicker {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 12.5px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin: 0 0 44px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .section-kicker::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--line);
+  }
+
+  .about-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .about-text p { color: var(--ink-soft); max-width: 58ch; }
+  .about-text p:first-child { color: var(--ink); font-size: 1.08rem; }
+
+  .fact-list {
+    list-style: none;
+    margin: 0;
+    padding-top: 28px;
+    border-top: 1px solid var(--line);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 28px 56px;
+  }
+  .fact-list li {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-width: 130px;
+  }
+  .fact-list dt, .fact-list .k {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 12px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+  .fact-list .v { color: var(--ink); font-size: 15px; font-weight: 500; }
+
+  .work-list { display: flex; flex-direction: column; }
+
+  .work-item {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 32px;
+    padding: 36px 0;
+    border-top: 1px solid var(--line);
+    text-decoration: none;
+    color: inherit;
+  }
+  .work-list .work-item:first-child { border-top: none; }
+
+  .work-meta {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 12.5px;
+    color: var(--ink-faint);
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .work-meta .year { color: var(--ink-soft); }
+
+  .work-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 9px;
+    background: var(--accent-soft);
+    color: var(--accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 4px;
+  }
+  .work-icon svg { width: 20px; height: 20px; }
+
+  .work-title {
+    font-family: "Fraunces", Georgia, serif;
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin: 0 0 8px;
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+  }
+  .work-item:hover .work-title { color: var(--accent); }
+
+  .work-desc { color: var(--ink-soft); max-width: 56ch; margin: 0 0 14px; }
+
+  .tag-row { display: flex; gap: 8px; flex-wrap: wrap; }
+  .tag {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 11.5px;
+    padding: 4px 9px;
+    border-radius: 3px;
+    background: var(--accent-soft);
+    color: var(--accent);
+    letter-spacing: 0.02em;
+  }
+  .tag.outline { background: transparent; border: 1px solid var(--line); color: var(--ink-soft); }
+
+  .mini-label {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin: 18px 0 8px;
+  }
+  .work-desc + .mini-label { margin-top: 4px; }
+
+  .arrow { font-size: 1rem; opacity: 0; transform: translateX(-4px); transition: all .15s ease; color: var(--accent); }
+  .work-item:hover .arrow { opacity: 1; transform: translateX(0); }
+
+  .skills-groups {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+  }
+  .skill-group h3 {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 12.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--ink-faint);
+    margin: 0 0 14px;
+    font-weight: 500;
+  }
+  .skill-group ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 9px; }
+  .skill-group li { font-size: 15px; color: var(--ink-soft); position: relative; padding-left: 16px; }
+  .skill-group li::before {
+    content: "";
+    position: absolute; left: 0; top: 9px;
+    width: 5px; height: 5px; border-radius: 50%;
+    background: var(--clay);
+  }
+
+  .role-header {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin: 0 0 4px;
+  }
+  .role-company {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 13px;
+    color: var(--ink-faint);
+    margin: 0 0 12px;
+  }
+  .role-bullets { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 9px; max-width: 56ch; }
+  .role-bullets li { font-size: 15.5px; color: var(--ink-soft); position: relative; padding-left: 16px; }
+  .role-bullets li::before {
+    content: "";
+    position: absolute; left: 0; top: 9px;
+    width: 5px; height: 5px; border-radius: 50%;
+    background: var(--clay);
+  }
+
+  footer.contact {
+    padding: 84px 0 64px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  footer.contact h2.display-sm {
+    font-family: "Fraunces", Georgia, serif;
+    font-weight: 480;
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    margin: 0;
+    max-width: 16ch;
+    text-wrap: balance;
+  }
+
+  .contact-links {
+    display: flex;
+    gap: 28px;
+    flex-wrap: wrap;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 14px;
+  }
+  .contact-links a { text-decoration: none; border-bottom: 1px solid var(--line); padding-bottom: 3px; transition: border-color .15s ease, color .15s ease; }
+  .contact-links a:hover { border-color: var(--accent); color: var(--accent); }
+
+  .fine-print {
+    color: var(--ink-faint);
+    font-size: 13px;
+    margin-top: 32px;
+  }
+
+  [data-reveal] {
+    opacity: 0;
+    transform: translateY(14px);
+    transition: opacity .6s ease, transform .6s ease;
+  }
+  [data-reveal].is-visible { opacity: 1; transform: none; }
+
+  @media (prefers-reduced-motion: reduce) {
+    [data-reveal] { opacity: 1; transform: none; transition: none; }
+    .btn.primary:hover { transform: none; }
+  }
+
+  @media (max-width: 720px) {
+    .skills-groups { grid-template-columns: 1fr; }
+    .work-item { grid-template-columns: 1fr; gap: 10px; }
+    .work-meta { flex-direction: row; gap: 14px; }
+    section { padding: 60px 0; }
+    .hero { padding: 56px 0 64px; }
+  }
+</style>
+
+<div class="wrap">
+  <header class="topbar">
+    <span class="mark">Bhavika Solao</span>
+    <nav class="topbar-links">
+      <a href="#experience">Experience</a>
+      <a href="#education">Education</a>
+      <a href="#work">Work</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero" data-reveal>
+    <canvas id="hero-canvas" aria-hidden="true"></canvas>
+    <span class="eyebrow">AI &amp; Data Engineer · MS Data Science '26</span>
+    <h1 class="display">I build AI systems <em>people can trust.</em></h1>
+    <p class="hero-lede">I'm Bhavika Solao, an AI &amp; Data Engineer pursuing an MS in Data Science at the University of Michigan-Dearborn. I build retrieval-augmented, multi-agent, and human-in-the-loop systems that stay accurate and safe once they hit production, not just in a demo.</p>
+    <div class="hero-actions">
+      <a class="btn primary" href="#work">See the work</a>
+      <button class="btn ghost" type="button" id="copy-email-hero" data-email="bhavikas@umich.edu">Copy my email</button>
+    </div>
+    <ul class="fact-list">
+      <li><span class="k">Based in</span><span class="v">United States</span></li>
+      <li><span class="k">Focus</span><span class="v">AI</span></li>
+      <li><span class="k">Member</span><span class="v">Upsilon Pi Epsilon</span></li>
+      <li><span class="k">Currently</span><span class="v">MS Data Science, '26</span></li>
+    </ul>
+  </section>
+
+<section id="experience" data-reveal>
+    <p class="section-kicker">Experience</p>
+    <div class="work-list">
+      <div class="work-item">
+        <div class="work-meta">
+          <span class="year">2026</span>
+          <span>Internship</span>
+        </div>
+        <div>
+          <h3 class="work-title">Agentic AI &amp; Data Platform Engineering Intern</h3>
+          <p class="role-company">MOTOR Information Systems · Full-time · Hybrid · Jun 2026 to Aug 2026</p>
+          <ul class="role-bullets">
+            <li>Migrated CI/CD from Azure DevOps Classic to YAML for reviewable pipeline as code.</li>
+            <li>Ran old and new pipelines in parallel for a zero disruption rollout.</li>
+            <li>Resolved 10+ .NET 10 compatibility issues across Docker, NuGet auth, code coverage, and the SQL client.</li>
+            <li>Built Docker multi stage images with BuildKit secrets for secure package auth.</li>
+            <li>Published containerized apps to AWS ECR with automated Octopus Deploy releases.</li>
+            <li>Analyzed a 4 database SQL Server pipeline (9 tables), tracing EF Core 8 models and SSIS ETL flows.</li>
+            <li>Used LLM driven static analysis (Kiro) to reverse map the codebase and auto generate docs.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="work-item">
+        <div class="work-meta">
+          <span class="year">2020–24</span>
+          <span>Full-time</span>
+        </div>
+        <div>
+          <h3 class="work-title">Data Analyst</h3>
+          <p class="role-company">Stralto Global · Full-time · India, Remote · Nov 2020 to Nov 2024</p>
+          <p class="work-desc">Built interactive dashboards in Power BI using advanced DAX to track key business metrics in real time. Automated ETL pipelines and reporting workflows to ensure high data accuracy and consistency. Delivered actionable insights to support leadership decisions and improve data driven planning.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="education" data-reveal>
+    <p class="section-kicker">Education</p>
+    <div class="work-list">
+      <div class="work-item">
+        <div class="work-meta">
+          <span class="year">2025–26</span>
+          <span>Masters</span>
+        </div>
+        <div>
+          <h3 class="work-title">University of Michigan-Dearborn</h3>
+          <p class="work-desc">MS in Data Science · GPA 3.61. Member, Upsilon Pi Epsilon (UPE), the International Honor Society for Computing and Information Disciplines, Michigan Beta Chapter. Inducted Winter 2026.</p>
+
+          <p class="mini-label">Coursework</p>
+          <div class="tag-row">
+            <span class="tag">Artificial Intelligence</span>
+            <span class="tag">Deep Learning</span>
+            <span class="tag">Advanced AI</span>
+            <span class="tag">Trustworthy AI</span>
+            <span class="tag">Database Systems</span>
+            <span class="tag">Introduction to Big Data</span>
+            <span class="tag">Security &amp; Privacy in Wireless Networks</span>
+            <span class="tag">Project Management &amp; Control</span>
+          </div>
+
+          <p class="mini-label">Currently enrolled, Fall 2026</p>
+          <div class="tag-row">
+            <span class="tag outline">Immersive Computing &amp; Digital Twins</span>
+            <span class="tag outline">Multivariate Statistics</span>
+          </div>
+
+          <p class="mini-label">Skills</p>
+          <div class="tag-row"><span class="tag">Python</span><span class="tag">SQL</span></div>
+        </div>
+      </div>
+      <div class="work-item">
+        <div class="work-meta">
+          <span class="year">Prior</span>
+          <span>Bachelors</span>
+        </div>
+        <div>
+          <h3 class="work-title">Savitribai Phule Pune University</h3>
+          <p class="work-desc">Bachelor of Engineering, Electronics and Telecommunication.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="work" data-reveal>
+    <p class="section-kicker">Work</p>
+    <div class="work-list">
+      <a class="work-item" href="#" target="_blank" rel="noopener">
+        <div class="work-meta">
+          <span class="work-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="2.3"/><circle cx="18" cy="6" r="2.3"/><circle cx="12" cy="18" r="2.3"/><path d="M7.8 7.5 10.4 15.8M16.2 7.5 13.6 15.8M8.3 6h7.4"/></svg></span>
+          <span class="year">2026</span>
+          <span>Multi-agent</span>
+        </div>
+        <div>
+          <h3 class="work-title">Pipeline Guard <span class="arrow">→</span></h3>
+          <p class="work-desc">A small team of AI agents that watches a data pipeline and, when it breaks, figures out why and fixes it. One agent checks logs for errors, another matches the error against past incidents to guess the cause, a third applies the fix if it's safe (or waits for human approval if it's risky), and a fourth writes a short summary of what happened.</p>
+          <div class="tag-row"><span class="tag">Python</span><span class="tag">RAG</span><span class="tag">Multi-Agent</span></div>
+        </div>
+      </a>
+      <a class="work-item" href="#" target="_blank" rel="noopener">
+        <div class="work-meta">
+          <span class="work-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 9.5h18"/><circle cx="6.3" cy="7.2" r="0.5" fill="currentColor" stroke="none"/><circle cx="8.3" cy="7.2" r="0.5" fill="currentColor" stroke="none"/></svg></span>
+          <span class="year">2026</span>
+          <span>Web app</span>
+        </div>
+        <div>
+          <h3 class="work-title">Smart Resume: Job Matching App <span class="arrow">→</span></h3>
+          <p class="work-desc">A resume–job matching web app (Jupiter Match) that compares resumes with job descriptions to identify skill gaps and compute an ATS-style match score. Combines structured rule-based evaluation with LLM-assisted analysis for clear, role-specific feedback. Shipped as an installable, PWA-enabled web app.</p>
+          <div class="tag-row"><span class="tag">Python</span><span class="tag">FastAPI</span><span class="tag">Prompt Engineering</span></div>
+        </div>
+      </a>
+      <a class="work-item" href="#" target="_blank" rel="noopener">
+        <div class="work-meta">
+          <span class="work-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h7l4 4v14H7z"/><path d="M14 3v4h4"/><circle cx="10.8" cy="14.2" r="2.3"/><path d="M12.5 15.9 14.5 17.9"/></svg></span>
+          <span class="year">2025</span>
+          <span>RAG system</span>
+        </div>
+        <div>
+          <h3 class="work-title">Enterprise Document QA with Hallucination Control <span class="arrow">→</span></h3>
+          <p class="work-desc">A retrieval-based QA system for enterprise policy documents using vector similarity search. Retrieves relevant document chunks and generates answers only when there's adequate contextual evidence. Otherwise it responds "I don't know" instead of guessing, to minimize hallucinations.</p>
+          <div class="tag-row"><span class="tag">Python</span><span class="tag">RAG</span><span class="tag">Vector Search</span></div>
+        </div>
+      </a>
+      <a class="work-item" href="#" target="_blank" rel="noopener">
+        <div class="work-meta">
+          <span class="work-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M10 3h4M10 3v6.2l-5 8.4A1.5 1.5 0 0 0 6.3 20h11.4a1.5 1.5 0 0 0 1.3-2.4L14 9.2V3"/><path d="M8.3 14.5h7.4"/></svg></span>
+          <span class="year">2025</span>
+          <span>Research tool</span>
+        </div>
+        <div>
+          <h3 class="work-title">Local LLM Research Assistant <span class="arrow">→</span></h3>
+          <p class="work-desc">A local LLaMA-3 research assistant built with Ollama, LangChain, and FAISS, implementing a RAG pipeline with document chunking and vector search for privacy-preserving question answering, multi-document summarization, and fast offline inference.</p>
+          <div class="tag-row"><span class="tag">LangChain</span><span class="tag">LLaMA-3</span><span class="tag">FAISS</span><span class="tag">Ollama</span></div>
+        </div>
+      </a>
+      <a class="work-item" href="#" target="_blank" rel="noopener">
+        <div class="work-meta">
+          <span class="work-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 3v2.6M12 18.4V21M4.6 4.6l1.8 1.8M17.6 17.6l1.8 1.8M3 12h2.6M18.4 12H21M4.6 19.4l1.8-1.8M17.6 6.4l1.8-1.8"/></svg></span>
+          <span class="year">2025</span>
+          <span>Agentic AI</span>
+        </div>
+        <div>
+          <h3 class="work-title">AI Support Ticket Agent <span class="arrow">→</span></h3>
+          <p class="work-desc">Reads a messy support ticket, pulls out the key details, and decides what to do about it: checks an order, issues a refund, or escalates, by calling the right tool automatically. Risky actions like refunds over $50 go to a human for approval first. A separate Q&amp;A component answers policy questions with citations back to source docs. Runs fully offline by default and swaps in real OpenAI/Pinecone calls when needed; tested against a 25 ticket eval set.</p>
+          <div class="tag-row"><span class="tag">Python</span><span class="tag">OpenAI</span><span class="tag">Pinecone</span><span class="tag">FastAPI</span><span class="tag">Agentic AI</span></div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <section data-reveal>
+    <p class="section-kicker">Skills &amp; tools</p>
+    <div class="skills-groups">
+      <div class="skill-group">
+        <h3>Languages</h3>
+        <ul><li>Python</li><li>SQL</li><li>JavaScript</li></ul>
+      </div>
+      <div class="skill-group">
+        <h3>AI / ML</h3>
+        <ul><li>RAG &amp; vector search</li><li>LangChain</li><li>Prompt engineering</li><li>LLaMA-3</li><li>Ollama</li></ul>
+      </div>
+      <div class="skill-group">
+        <h3>Tools</h3>
+        <ul><li>FastAPI</li><li>Pinecone &amp; FAISS</li><li>Git &amp; GitHub</li></ul>
+      </div>
+      <div class="skill-group">
+        <h3>Platform &amp; DevOps</h3>
+        <ul><li>Docker</li><li>CI/CD (Azure DevOps)</li><li>AWS ECR</li><li>Octopus Deploy</li><li>Power BI &amp; DAX</li></ul>
+      </div>
+    </div>
+  </section>
+
+  <footer class="contact" id="contact" data-reveal>
+    <h2 class="display-sm">Open to new opportunities.</h2>
+    <div class="contact-links">
+      <a href="mailto:bhavikas@umich.edu" id="copy-email-footer" data-email="bhavikas@umich.edu">bhavikas@umich.edu</a>
+      <a href="https://github.com/BhaviSolao" target="_blank" rel="noopener">GitHub ↗</a>
+      <a href="https://www.linkedin.com/in/bhavikasolao/" target="_blank" rel="noopener">LinkedIn ↗</a>
+    </div>
+    <p class="fine-print">© 2026 Bhavika Solao.</p>
+  </footer>
+</div>
+
+<script>
+  (function () {
+    var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var els = document.querySelectorAll('[data-reveal]');
+    if (reduced || !('IntersectionObserver' in window)) {
+      els.forEach(function (el) { el.classList.add('is-visible'); });
+      return;
+    }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    els.forEach(function (el) { io.observe(el); });
+  })();
+
+  (function () {
+    function copyEmail(el) {
+      var email = el.getAttribute('data-email');
+      if (!email) return;
+
+      var copied = false;
+      try {
+        var temp = document.createElement('input');
+        temp.value = email;
+        temp.readOnly = true;
+        temp.style.position = 'fixed';
+        temp.style.top = '-1000px';
+        temp.style.opacity = '0';
+        document.body.appendChild(temp);
+        temp.focus();
+        temp.select();
+        temp.setSelectionRange(0, email.length);
+        copied = document.execCommand('copy');
+        document.body.removeChild(temp);
+      } catch (err) {
+        copied = false;
+      }
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(email).catch(function () {});
+      }
+
+      var original = el.dataset.originalText || el.textContent;
+      el.dataset.originalText = original;
+      el.textContent = copied ? ('Copied: ' + email) : ('Email: ' + email);
+      window.clearTimeout(el._copyTimer);
+      el._copyTimer = window.setTimeout(function () {
+        el.textContent = original;
+      }, copied ? 2400 : 5000);
+    }
+
+    var heroBtn = document.getElementById('copy-email-hero');
+    if (heroBtn) {
+      heroBtn.addEventListener('click', function () { copyEmail(heroBtn); });
+    }
+
+    var footerLink = document.getElementById('copy-email-footer');
+    if (footerLink) {
+      footerLink.addEventListener('click', function (e) {
+        e.preventDefault();
+        copyEmail(footerLink);
+      });
+    }
+  })();
+
+  (function () {
+    var canvas = document.getElementById('hero-canvas');
+    if (!canvas) return;
+
+    var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduced) { canvas.style.display = 'none'; return; }
+
+    var ctx = canvas.getContext('2d');
+    var dpr = Math.min(window.devicePixelRatio || 1, 2);
+    var w = 0, h = 0, nodes = [];
+    var LINK_DIST = 150;
+
+    function readColor(varName, fallback) {
+      var v = getComputedStyle(document.documentElement).getPropertyValue(varName).trim();
+      return v || fallback;
+    }
+
+    function hexToRgb(hex) {
+      var m = hex.replace('#', '');
+      if (m.length === 3) m = m.split('').map(function (c) { return c + c; }).join('');
+      var num = parseInt(m, 16);
+      return [(num >> 16) & 255, (num >> 8) & 255, num & 255];
+    }
+
+    function resize() {
+      var rect = canvas.getBoundingClientRect();
+      w = rect.width; h = rect.height;
+      canvas.width = w * dpr;
+      canvas.height = h * dpr;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      var count = Math.max(14, Math.min(34, Math.round((w * h) / 22000)));
+      nodes = [];
+      for (var i = 0; i < count; i++) {
+        nodes.push({
+          x: Math.random() * w,
+          y: Math.random() * h,
+          vx: (Math.random() - 0.5) * 0.18,
+          vy: (Math.random() - 0.5) * 0.18
+        });
+      }
+    }
+
+    function tick() {
+      var accentRgb = hexToRgb(readColor('--accent', '#2f5d50'));
+      ctx.clearRect(0, 0, w, h);
+
+      for (var i = 0; i < nodes.length; i++) {
+        var n = nodes[i];
+        n.x += n.vx; n.y += n.vy;
+        if (n.x < 0 || n.x > w) n.vx *= -1;
+        if (n.y < 0 || n.y > h) n.vy *= -1;
+        n.x = Math.max(0, Math.min(w, n.x));
+        n.y = Math.max(0, Math.min(h, n.y));
+      }
+
+      for (var a = 0; a < nodes.length; a++) {
+        for (var b = a + 1; b < nodes.length; b++) {
+          var dx = nodes[a].x - nodes[b].x, dy = nodes[a].y - nodes[b].y;
+          var dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < LINK_DIST) {
+            var alpha = (1 - dist / LINK_DIST) * 0.16;
+            ctx.strokeStyle = 'rgba(' + accentRgb.join(',') + ',' + alpha.toFixed(3) + ')';
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.moveTo(nodes[a].x, nodes[a].y);
+            ctx.lineTo(nodes[b].x, nodes[b].y);
+            ctx.stroke();
+          }
+        }
+      }
+
+      ctx.fillStyle = 'rgba(' + accentRgb.join(',') + ',0.45)';
+      for (var j = 0; j < nodes.length; j++) {
+        ctx.beginPath();
+        ctx.arc(nodes[j].x, nodes[j].y, 1.6, 0, Math.PI * 2);
+        ctx.fill();
+      }
+
+      requestAnimationFrame(tick);
+    }
+
+    resize();
+    requestAnimationFrame(tick);
+    window.addEventListener('resize', resize);
+  })();
+</script>
